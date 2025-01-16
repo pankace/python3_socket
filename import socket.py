@@ -40,10 +40,8 @@ def main():
             s.connect((HOST, PORT))
             print(f"Connected to server at {HOST}:{PORT}")
 
-            # Start receiving messages in a separate thread
             threading.Thread(target=receive_messages, args=(s,), daemon=True).start()
 
-            # Start sending 1,000 messages very quickly
             send_messages_fast(s)
 
     except Exception as e:
